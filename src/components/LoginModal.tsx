@@ -11,9 +11,12 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { toast } from '../hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginModal = () => {
   const { state, dispatch } = useApp();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   const [userType, setUserType] = useState<'user' | 'vendor'>('user');
   
@@ -55,7 +58,9 @@ const LoginModal = () => {
           type: userType
         } 
       });
-      
+      if (userType === 'vendor') {
+        navigate('/vendor-dashboard');
+      }
       dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
       
       toast({
@@ -102,7 +107,9 @@ const LoginModal = () => {
         type: userType
       } 
     });
-    
+    if (userType === 'vendor') {
+      navigate('/vendor-dashboard');
+    }
     dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
     
     const welcomeMessage = userType === 'vendor' 
