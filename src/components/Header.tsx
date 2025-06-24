@@ -25,32 +25,34 @@ const Header = () => {
             Vaikunta
           </Link>
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors">
-              Home
-            </Link>
-            <Link to="/venues" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors">
-              Venues
-            </Link>
-            <Link to="/catering" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors">
-              Catering
-            </Link>
-            <Link to="/entertainment" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors">
-              Entertainment
-            </Link>
-            <Link to="/services" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors">
-              Services
-            </Link>
-            <Link to="/plan-event" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors">
-              Plan an Event
-            </Link>
-            <Link to="/contact" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors">
-              Contact
-            </Link>
+          {/* Navigation - Fixed spacing */}
+          <nav className="hidden md:flex items-center">
+            <div className="flex items-center space-x-6">
+              <Link to="/" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors px-2 py-1">
+                Home
+              </Link>
+              <Link to="/venues" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors px-2 py-1">
+                Venues
+              </Link>
+              <Link to="/catering" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors px-2 py-1">
+                Catering
+              </Link>
+              <Link to="/entertainment" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors px-2 py-1">
+                Entertainment
+              </Link>
+              <Link to="/services" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors px-2 py-1">
+                Services
+              </Link>
+              <Link to="/plan-event" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors px-2 py-1">
+                Plan an Event
+              </Link>
+              <Link to="/contact" className="text-vaikunta-charcoal hover:text-vaikunta-gold transition-colors px-2 py-1">
+                Contact
+              </Link>
+            </div>
           </nav>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <Button
               variant="outline"
               onClick={() => dispatch({ type: 'TOGGLE_LOGIN_MODAL' })}
