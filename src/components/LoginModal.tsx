@@ -60,6 +60,7 @@ const LoginModal = () => {
       });
       if (userType === 'vendor') {
         navigate('/vendor-dashboard');
+        return;
       }
       dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
       
