@@ -17,7 +17,14 @@ import NotFound from "./pages/NotFound";
 import VendorDashboard from "./pages/VendorDashboard"; // Added import
 import Cart from "./components/Cart";
 import LoginModal from "./components/LoginModal";
+import VendorDashboard from './components/VendorDashboard'; // Adjust path if needed
+// For React Router v6+
+import { Routes, Route } from 'react-router-dom';
 
+<Routes>
+  {/* Other routes */}
+  <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+</Routes>
 const queryClient = new QueryClient();
 
 const App = () => (
