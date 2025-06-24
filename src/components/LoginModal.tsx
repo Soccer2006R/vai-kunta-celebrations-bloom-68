@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import {
@@ -12,7 +13,6 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { toast } from '../hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
-
 
 const LoginModal = () => {
   const { state, dispatch } = useApp();
@@ -58,10 +58,13 @@ const LoginModal = () => {
           type: userType
         } 
       });
+      
+      dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
+      
+      // Redirect vendors to dashboard
       if (userType === 'vendor') {
         navigate('/vendor-dashboard');
       }
-      dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
       
       toast({
         title: "Logged In",
@@ -107,10 +110,13 @@ const LoginModal = () => {
         type: userType
       } 
     });
+    
+    dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
+    
+    // Redirect vendors to dashboard
     if (userType === 'vendor') {
       navigate('/vendor-dashboard');
     }
-    dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
     
     const welcomeMessage = userType === 'vendor' 
       ? `Welcome to Vaikunta, ${registerName}! Your vendor account has been created.`

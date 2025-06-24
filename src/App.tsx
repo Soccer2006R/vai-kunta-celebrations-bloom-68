@@ -13,6 +13,7 @@ import EntertainmentPage from "./pages/EntertainmentPage";
 import ServicesPage from "./pages/ServicesPage";
 import PlanEventPage from "./pages/PlanEventPage";
 import ContactPage from "./pages/ContactPage";
+import VendorDashboard from "./pages/VendorDashboard";
 import NotFound from "./pages/NotFound";
 import Cart from "./components/Cart";
 import LoginModal from "./components/LoginModal";
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/plan-event" element={<PlanEventPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/vendor-dashboard" element={<VendorDashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Cart />
