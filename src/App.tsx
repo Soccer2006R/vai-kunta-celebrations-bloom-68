@@ -14,12 +14,11 @@ import ServicesPage from "./pages/ServicesPage";
 import PlanEventPage from "./pages/PlanEventPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
-import VendorDashboard from "./pages/VendorDashboard"; // Added import
 import Cart from "./components/Cart";
 import LoginModal from "./components/LoginModal";
 import VendorDashboard from './components/VendorDashboard'; // Adjust path if needed
 // For React Router v6+
-import { Routes, Route } from 'react-router-dom';
+
 
 <Routes>
   {/* Other routes */}
