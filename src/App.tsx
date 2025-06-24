@@ -14,6 +14,7 @@ import ServicesPage from "./pages/ServicesPage";
 import PlanEventPage from "./pages/PlanEventPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
+import VendorDashboard from "./pages/VendorDashboard"; // Added import
 import Cart from "./components/Cart";
 import LoginModal from "./components/LoginModal";
 
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/plan-event" element={<PlanEventPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/vendor-dashboard" element={<VendorDashboard />} /> {/* Added route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Cart />

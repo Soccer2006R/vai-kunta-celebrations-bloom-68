@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Added import
 import { useApp } from '../context/AppContext';
 import {
   Dialog,
@@ -14,6 +15,7 @@ import { toast } from '../hooks/use-toast';
 
 const LoginModal = () => {
   const { state, dispatch } = useApp();
+  const navigate = useNavigate(); // Added useNavigate hook
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   const [userType, setUserType] = useState<'user' | 'vendor'>('user');
   
@@ -62,6 +64,10 @@ const LoginModal = () => {
         title: "Logged In",
         description: `Welcome back, ${loginEmail.split('@')[0]}!`
       });
+
+      if (userType === 'vendor') {
+        navigate('/vendor-dashboard');
+      }
     } else {
       toast({
         title: "Login Failed",
@@ -113,6 +119,10 @@ const LoginModal = () => {
       title: "Registration Successful",
       description: welcomeMessage
     });
+
+    if (userType === 'vendor') {
+      navigate('/vendor-dashboard');
+    }
   };
 
   return (
