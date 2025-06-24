@@ -8,11 +8,19 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   const { state, dispatch } = useApp();
 
+  const handleBecomeVendor = () => {
+    // Add URL parameter to indicate vendor registration flow
+    const url = new URL(window.location.href);
+    url.searchParams.set('vendor', 'true');
+    window.history.pushState({}, '', url);
+    
+    dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[rgba(248,245,236,0.95)] backdrop-blur-md border-b border-vaikunta-gold/20">
-<div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="text-2xl font-bold text-vaikunta-gold">
             Vaikunta
           </Link>
@@ -42,7 +50,6 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* Right side buttons */}
           <div className="flex items-center space-x-4">
             <Button
               variant="outline"
@@ -66,7 +73,10 @@ const Header = () => {
               )}
             </Button>
 
-            <Button className="bg-vaikunta-gold hover:bg-vaikunta-gold/90 text-white">
+            <Button 
+              onClick={handleBecomeVendor}
+              className="bg-vaikunta-gold hover:bg-vaikunta-gold/90 text-white"
+            >
               Become a Vendor
             </Button>
           </div>

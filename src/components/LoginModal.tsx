@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import {
   Dialog,
@@ -27,6 +26,20 @@ const LoginModal = () => {
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  // Set defaults when modal opens for vendor registration
+  useEffect(() => {
+    if (state.isLoginModalOpen) {
+      // Check if this is for vendor registration (we'll enhance this logic)
+      const urlParams = new URLSearchParams(window.location.search);
+      const isVendorFlow = urlParams.get('vendor') === 'true';
+      
+      if (isVendorFlow) {
+        setActiveTab('register');
+        setUserType('vendor');
+      }
+    }
+  }, [state.isLoginModalOpen]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,9 +105,13 @@ const LoginModal = () => {
     
     dispatch({ type: 'TOGGLE_LOGIN_MODAL' });
     
+    const welcomeMessage = userType === 'vendor' 
+      ? `Welcome to Vaikunta, ${registerName}! Your vendor account has been created.`
+      : `Welcome to Vaikunta, ${registerName}!`;
+    
     toast({
       title: "Registration Successful",
-      description: `Welcome to Vaikunta, ${registerName}!`
+      description: welcomeMessage
     });
   };
 
@@ -103,12 +120,12 @@ const LoginModal = () => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-bold">
-            {activeTab === 'login' ? 'Login' : 'Create an Account'}
+            {activeTab === 'login' ? 'Login' : userType === 'vendor' ? 'Become a Vendor' : 'Create an Account'}
           </DialogTitle>
         </DialogHeader>
         
         <div className="mt-4">
-          <Tabs defaultValue={activeTab} onValueChange={(value) => setActiveTab(value as 'login' | 'register')}>
+          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'login' | 'register')}>
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="login">Login</TabsTrigger>
               <TabsTrigger value="register">Register</TabsTrigger>
@@ -208,7 +225,7 @@ const LoginModal = () => {
                   type="submit" 
                   className="w-full bg-vaikunta-gold hover:bg-vaikunta-gold/90"
                 >
-                  Create Account
+                  {userType === 'vendor' ? 'Create Vendor Account' : 'Create Account'}
                 </Button>
               </form>
             </TabsContent>
