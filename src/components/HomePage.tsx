@@ -83,11 +83,6 @@ const HomePage = () => {
                   <Sparkles className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline">
-                <Link to="/vendors" className="px-8 py-3 border border-gray-400 text-gray-700 hover:bg-gray-100 rounded-lg flex items-center justify-center transition-all">
-                  Become a Vendor
-                </Link>
-              </Button>
             </div>
             <div className="mt-20 grid grid-cols-3 gap-10">
               {stats.map((stat, index) => (
